@@ -1,0 +1,423 @@
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes with deep cooking...!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        /* Red */
+$bgDefault      : #e74c3c;
+$bgHighlight    : #c0392b;
+$colDefault     : #ecf0f1;
+$colHover       : #ffbbbc;
+        /* --- Style --- */
+.navbar-default {
+    background-color: $bgDefault;
+    border-color: $bgHighlight;
+    .navbar-brand {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHover; }}
+    .navbar-nav {
+        > li {
+            > a {
+                color: $colDefault;
+                &:hover, &:focus {
+                    color: $colHover;   }}}
+        .active {
+            > a, > a:hover, > a:focus {
+                color: $colHover;
+                background-color: $bgHighlight; }}
+        .open {
+            > a, > a:hover, > a:focus {
+                color: $colHover;
+                background-color: $bgHighlight;
+                .caret {
+                    border-top-color: $colHover;
+                    border-bottom-color: $colHover; }}}
+        > .dropdown {
+            > a {
+                .caret {
+                    border-top-color: $colDefault;
+                    border-bottom-color: $colDefault; }
+                &:hover, &:focus {
+                    .caret {
+                        border-top-color: $colHover;
+                        border-bottom-color: $colHover; }}}}}
+    .navbar-toggle {
+        border-color: $bgHighlight;
+        &:hover, &:focus {
+            background-color: $bgHighlight; }
+        .icon-bar {
+            background-color: $colDefault; }}}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: $colDefault;
+        &:hover, &:focus {
+            color: $colHover;
+            background-color: $bgHighlight; }}
+}
+
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+
+    <script>
+    // Pause the video when the modal is closed
+    $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+        // Remove the src so the player itself gets removed, as this is the only
+        // reliable way to ensure the video stops playing in IE
+        $("#trailer-video-container").empty();
+    });
+
+    // Start playing the video whenever the trailer modal is opened
+    $(document).on('click', '.movie-button-play', function (event) {
+        var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+        var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+        $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+          'id': 'trailer-video',
+          'type': 'text-html',
+          'src': sourceUrl,
+          'frameborder': 0
+        }));
+    });
+
+    // Animate in the movies when the page loads
+    $(document).ready(function () {
+      $('.movie-tile').hide().first().show("fast", function showNext() {
+        $(this).next("div").show("fast", showNext);
+      });
+    });
+
+    // modals handling
+      function launch_modal(id) {
+     // Hide all modals using class if required.
+     $('.modal').modal('hide');
+     $('#'+id).modal('show');
+  }
+
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+
+<!-- Movie player modal -->
+  <div class="modal" id="trailer">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+          <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+        </a>
+        <div class="scale-media" id="trailer-video-container">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- Page top -->
+<!-- Main Page Content -->
+<div class="container">
+  <div class="navbar navbar-header navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">ALL NEW! Fresh Tomatoes Movie Trailers - </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+      
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg" width="220" height="342">
+    <h2>Toy Story</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="KYz2wyBy3kc" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Toy Story</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>A story of a boy and his toys that come to life</p>
+        <h4>Release year</h4>
+        <p> 1995</p>
+        <h4>Starring</h4>
+        <p>Tom Hanks (Woody), Tim Allen (Buzz Lightyear)</p>
+        <h4>Director</h4>
+        <p>John Lasseter</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg" width="220" height="342">
+    <h2>Avatar</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="d1_JBMrrYw8" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Avatar</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>A marine on an alien planet</p>
+        <h4>Release year</h4>
+        <p> 2009</p>
+        <h4>Starring</h4>
+        <p>Sam Worthington, Zoe Saldana, Sigourney Weaver</p>
+        <h4>Director</h4>
+        <p>James Cameron</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg" width="220" height="342">
+    <h2>Fight Club</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="SUXWAEX2jlg" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Fight Club</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>An unnamed guy creates a fight club with a soap maker</p>
+        <h4>Release year</h4>
+        <p> 1999</p>
+        <h4>Starring</h4>
+        <p>Brad Pitt, Edward Norton, Helena Bonham Carter</p>
+        <h4>Director</h4>
+        <p>David Fincher</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/1/11/School_of_Rock_Poster.jpg" width="220" height="342">
+    <h2>School of Rock</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal4">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="XCwy6lW5Ixc" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal4" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">School of Rock</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>Using rock music to learn</p>
+        <h4>Release year</h4>
+        <p> 2003</p>
+        <h4>Starring</h4>
+        <p>Jack Black, Mike White, Joan Cusack</p>
+        <h4>Director</h4>
+        <p>Richard Linklater</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg" width="220" height="342">
+    <h2>Ratatouille</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="c3sBBRxDAqk" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal5" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ratatouille</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>A rat is a chef in Paris</p>
+        <h4>Release year</h4>
+        <p> 2007</p>
+        <h4>Starring</h4>
+        <p>Brad Garrett, Lou Romano, Patton Oswalt</p>
+        <h4>Director</h4>
+        <p>Brad Bird, Jan Pinkava</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/93/Star_Wars_Episode_III_Revenge_of_the_Sith_poster.jpg" width="220" height="342">
+    <h2>Star Wars: Episode III</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal6">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="WHSU3KSK8dw" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal6" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Star Wars: Episode III</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>Sith Lord Darth Sidious steps out of the shadows, at which time Anakin succumbs to his emotions</p>
+        <h4>Release year</h4>
+        <p> 2005</p>
+        <h4>Starring</h4>
+        <p>Hayden Christensen, Natalie Portman, Ewan McGregor</p>
+        <h4>Director</h4>
+        <p>George Lucas</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-lg-4 text-center" data-toggle="modal">
+    <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Big-fish-movie-poster.jpg" width="220" height="342">
+    <h2>Big Fish</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal7">
+      <span class="glyphicon glyphicon-paperclip"></span> More details!
+    </button>
+    <button type="button" class="btn btn-primary movie-button-play"
+    data-trailer-youtube-id="lfW8qaJL1Fs" data-toggle="modal" data-target="#trailer">
+      <span class="glyphicon glyphicon-film"></span> Play Trailer
+    </button>
+    <p></p><p/><p/>
+</div>
+
+<!-- Movie information Modal -->
+<div class="modal fade" id="myModal7" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Big Fish</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Plot</h4>
+        <p>A son tries to learn more about his dying father by reliving stories and myths he told about his life.</p>
+        <h4>Release year</h4>
+        <p> 2003</p>
+        <h4>Starring</h4>
+        <p>Ewan McGregor, Albert Finney, Billy Crudup</p>
+        <h4>Director</h4>
+        <p>Tim Burton</p>
+      </div>
+    </div>
+    </div>
+</div>
+
+</div>
+  </body>
+</html>
