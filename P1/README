@@ -1,0 +1,89 @@
+                   Project 1 - Movie Trailer Website
+
+What is it?
+-----------
+
+	The Movie Trailer Website is a simple, yet very practical server-side
+	application that produces a website with some of my favorite movies. 
+	
+	Two buttons are provided below each movie poster image: (*) More details!
+	and (*) Play Trailer
+
+	(*) More details! when pressed:
+		Shows a modal tht provide information regarding cast, director,
+		year and plot.
+
+	(*) Play Trailer when pressed: 
+		Creates a frame to present movie trailer for the interested in 
+		a tease.
+	
+	When you click outside the modal or movie trailer are, it is automatically
+	closed, and you return to the main page mosaic.
+
+Installation & pre-requisites
+-----------------------------
+
+	Requires Python 2.7.9. Might work in recent releases, but haven't been
+	tested at all on those.
+
+
+How to execute
+--------------
+
+	Follow following steps:
+
+	o  $ cd P1	#(or complety route depending on where yo placed it)
+	o  $ python entertainment_center.py
+
+	Application will: 
+		
+		(1) launch browser and/or (if browser already opened)
+		(2) create a new tab opening the newly created 
+		    file 'fresh_tomatoes.html'
+
+How to add more movies
+----------------------
+
+	If you are familiar to python and/or some programming experience:
+
+	Insert a new variable containing proper information using following
+	convention on file 'entertainment_center.py':
+
+	new_movie_name = media.Movie(
+    		movie_name,
+    		plot_line,
+    		poster_image_URL,
+    		trailer_video_URL,
+    		director,
+    		rating,
+    		starring_roles,
+    		release_year)
+
+	For example, see line 4 on 'entertainment_center.py'
+
+	toy_story = media.Movie(
+    		"Toy Story",
+    		"A story of a boy and his toys that come to life",
+    		"https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg",
+    		"https://www.youtube.com/watch?v=KYz2wyBy3kc&spfreload=10",
+    		"John Lasseter",
+    		"G",
+    		"Tom Hanks (Woody), Tim Allen (Buzz Lightyear)",
+    		"1995")
+	
+	Make sure to follow after last actual similar declaration of the ones
+	already created
+
+	Find following line (currently line 77):
+
+		movies = [toy_story, avatar, fight_club, school_of_rock, ratatouille, \
+			star_wars_episode_three, big_fish]
+
+	And add you newly created variable into the comma separated list.
+
+	
+Contacts
+--------
+
+	Further information, contact benhail.acosta at gmail dot com
+
